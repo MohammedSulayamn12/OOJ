@@ -1,0 +1,30 @@
+import java.util.Scanner;
+class Main {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+
+        double disc = (b * b) - (4 * a * c);
+
+        if (disc == 0) {
+            double f = -b / (2 * a);
+            double g = -b / (2 * a);
+            System.out.println(f);
+            System.out.println(g);
+            System.out.println("Root are equal");
+        } else if (disc > 0) {
+            double i = (-b + Math.pow(disc, 0.5)) / (2.0 * a);
+            double j = (-b - Math.pow(disc, 0.5)) / (2.0 * a);
+            System.out.println(i);
+            System.out.println(j);
+            System.out.println("Root are real");
+        } else {
+            System.out.println("Root are not real and equal");
+        }
+
+    }
+}
+      
