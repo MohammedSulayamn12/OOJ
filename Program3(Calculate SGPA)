@@ -1,0 +1,81 @@
+import java.util.Scanner;
+
+class Student_details {
+
+    int marks[] = new int[3];
+    String usn;
+    String name;
+    Scanner sc = new Scanner(System.in);
+
+    int credits[]=new int[3];
+
+    void getdetail() {
+        System.out.print("Enter USN: ");
+        usn = sc.next();
+        System.out.print("Enter Name: ");
+        name = sc.next();
+        System.out.println("Enter marks for 3 subjects:");
+        for (int i = 0; i < 3; i++) {
+            marks[i] = sc.nextInt();
+        }
+        System.out.println("Enter credits for 3 subjects:");
+        for (int i = 0; i < 3; i++) {
+            credits[i] = sc.nextInt();
+        }
+    }
+
+    void display() {
+        System.out.println("USN: " + usn);
+        System.out.println("Name: " + name);
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Marks of subject " + (i + 1) + ": " + marks[i]);
+        }
+        System.out.println("SGPA:"+calculateSGPA());
+    }
+
+    int grade(int mark) {
+        if (mark >= 90) {
+            return 10;
+        } else if (mark >= 80) {
+            return 9;
+        } else if (mark >= 70) {
+            return 8;
+        } else if (mark >= 60) {
+            return 7;
+        } else if (mark >= 50) {
+            return 6;
+        } else if (mark >= 40) {
+            return 5;
+        } else {
+            return 0; // Fail
+        }
+    }
+    double calculateSGPA() {
+        int totalCredits = 0;
+        int totalPoints = 0;
+        for (int i = 0; i < 3; i++) {
+            int gradePoint = grade(marks[i]);
+            totalPoints += gradePoint * credits[i];
+            totalCredits += credits[i];
+        }
+        return (double) totalPoints / totalCredits;
+    }
+
+    }
+
+    class Main {
+        public static void main(String args[]) {
+            Student_details s1[] = new Student_details[3];
+            for (int i = 0; i < 3; i++) {
+                s1[i] = new Student_details();
+            }
+            for (int i = 0; i < 3; i++) {
+                System.out.println("Enter the details of student " + (i + 1) + ":");
+                s1[i].getdetail();
+            }
+            for (int i = 0; i < 3; i++) {
+                System.out.println("Details of student " + (i + 1) + ":");
+                s1[i].display();
+            }
+        }
+    }
