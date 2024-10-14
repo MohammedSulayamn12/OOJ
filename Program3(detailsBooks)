@@ -1,0 +1,74 @@
+import java.util.Scanner;
+
+class Book {
+    String name;
+    String author;
+    double price;
+    int page_no;
+    Book(String name, String author, double price, int page_no) {
+        this.name = name;
+        this.author = author;
+        this.price = price;
+        this.page_no = page_no;
+    }
+
+    void setName(String name) {
+        this.name = name;
+    }
+
+    void setAuthor(String author) {
+        this.author = author;
+    }
+
+    void setPrice(double price) {
+        this.price = price;
+    }
+
+    void setPage(int page_no) {
+        this.page_no = page_no;
+    }
+    String getName() {
+        return this.name;
+    }
+    String getAuthor() {
+        return this.author;
+    }
+    double getPrice() {
+        return this.price;
+    }
+    int getPage_no() {
+        return this.page_no;
+    }
+    public String toString() {
+        return "Book Name: " + this.name + "\nAuthor: " + this.author + "\nPrice: " + this.price + "\nPages: " + this.page_no;
+    }
+}
+
+public class book1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number of books:");
+        int n = sc.nextInt();
+        sc.nextLine();  
+        Book[] books = new Book[n];  
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter details for Book " + (i + 1) + ":");
+            System.out.print("Enter the Book name: ");
+            String name = sc.nextLine();
+            System.out.print("Enter the Author's name: ");
+            String author = sc.nextLine();
+            System.out.print("Enter the price of the Book: ");
+            double price = sc.nextDouble();
+            System.out.print("Enter the number of pages: ");
+            int page_no = sc.nextInt();
+            sc.nextLine();  
+            books[i] = new Book(name, author, price, page_no);
+        }
+        for (int i = 0; i < n; i++) {
+            System.out.println("\nDetails of Book " + (i + 1) + ":");
+            System.out.println(books[i].toString());
+        }
+
+        sc.close();
+    }
+}
